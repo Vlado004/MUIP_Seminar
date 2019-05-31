@@ -54,17 +54,18 @@ function odgovori(ova_tipka) {
 
           broj_pitanja++;
           if (broj_pitanja == 7) {
-            localStorage.setItem("br_tocnih", tocnih);
-            window.location.href='./Seminar_rezultat.html';
+              localStorage.setItem("br_tocnih", tocnih);
+              window.location.href='./Seminar_rezultat.html';
+          } else {
+              postavi_tipke();
           }
-          postavi_tipke();
           jel_stisnija = false;
         }, 1000);
     }
 }
 
 function postavi_tipke() {
-    polje.innerHTML = json_pitanja.pitanje[broj_pitanja].text;
+    polje.innerHTML = "Pitanje broj " + (broj_pitanja + 1) + ".</br>" + json_pitanja.pitanje[broj_pitanja].text;
 
     for (let i = 0; i < 4; i++) {
         var mjesto = Math.floor(Math.random() * 4);
@@ -99,7 +100,7 @@ function rezultati() {
     tocnih = localStorage.getItem("br_tocnih");
     rez_polje = document.getElementById('rez_prostor');
     var rez_message = "Imate " + tocnih + " točnih odgovora!";
-    rez_message += "</br>" + rez_opcije[tocnih] + "</br>Nadam se da vam se svidilo i hvala na pažnji :)";
+    rez_message += "</br>" + rez_opcije[tocnih] + "</br>Nadam se da vam se svidilo i hvala na pažnji";
     rez_polje.innerHTML = rez_message;
 }
 
